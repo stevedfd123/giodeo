@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
 <title>GEODIO — One Vision. Multiple Industries. Infinite Possibilities.</title>
 <meta name="description" content="GEODIO is a premium house of brands building distinctive businesses across Event Management, Apparel, Advertising and Branding. A vision first conceived in 2013–2014." />
-<meta name="theme-color" content="#02040c" />
+<meta name="theme-color" content="#050505" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="apple-mobile-web-app-title" content="GEODIO" />
@@ -18,16 +18,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Syne:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 <style>
 :root{
-  --obsidian:#02040c;
-  --void:#050814;
-  --navy:#061428;
-  --blue:#0a84ff;
-  --cyan:#3ecbff;
-  --gold:#d4b37a;
-  --champagne:#e8d5b0;
-  --ivory:#f4efe6;
-  --graphite:#8b93a7;
-  --line:rgba(62,203,255,.18);
+  --obsidian:#050505;
+  --void:#0a0907;
+  --navy:#15110a;
+  --gold:#c9a24a;
+  --champagne:#f0dfb7;
+  --ivory:#f6f1e6;
+  --graphite:#a39a86;
+  --line:rgba(201,162,74,.2);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -45,7 +43,7 @@ body::before{
 /* cursor glow */
 .cursor-glow{
   position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:1;
-  background:radial-gradient(circle,rgba(10,132,255,.16),transparent 62%);
+  background:radial-gradient(circle,rgba(201,162,74,.15),transparent 62%);
   transform:translate(-50%,-50%);mix-blend-mode:screen;
 }
 
@@ -56,16 +54,16 @@ body::before{
 }
 #loader.done{opacity:0;visibility:hidden;pointer-events:none}
 .loader-inner{text-align:center}
-.loader-mark{width:180px;height:180px;margin:0 auto .4rem;filter:drop-shadow(0 0 32px rgba(10,132,255,.75));object-fit:contain}
+.loader-mark{width:180px;height:180px;margin:0 auto .4rem;filter:sepia(.85) saturate(1.3) hue-rotate(350deg) drop-shadow(0 0 32px rgba(201,162,74,.55));object-fit:contain}
 .loader-word{
   font-family:Syne,sans-serif;font-weight:800;letter-spacing:.42em;font-size:1.1rem;
-  background:linear-gradient(90deg,#fff,var(--cyan),#fff);
+  background:linear-gradient(90deg,#fff,var(--champagne),#fff);
   background-size:200% 100%;
   -webkit-background-clip:text;background-clip:text;color:transparent;
   animation:shimmer 2.2s linear infinite;
 }
-.loader-bar{width:180px;height:1px;margin:1.4rem auto 0;background:#123;overflow:hidden;position:relative}
-.loader-bar span{position:absolute;inset:0;background:linear-gradient(90deg,transparent,var(--cyan),transparent);animation:scan 1.4s ease-in-out infinite}
+.loader-bar{width:180px;height:1px;margin:1.4rem auto 0;background:#302714;overflow:hidden;position:relative}
+.loader-bar span{position:absolute;inset:0;background:linear-gradient(90deg,transparent,var(--gold),transparent);animation:scan 1.4s ease-in-out infinite}
 @keyframes shimmer{to{background-position:-200% 0}}
 @keyframes scan{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
 
@@ -75,14 +73,14 @@ body::before{
   padding:1.1rem 4vw;background:linear-gradient(180deg,rgba(0,0,0,.55),transparent);
 }
 .nav .brand{display:flex;align-items:center;gap:.7rem;font-family:Syne,sans-serif;font-weight:800;letter-spacing:.28em;font-size:.78rem}
-.nav .brand img{width:42px;height:42px;object-fit:contain;filter:drop-shadow(0 0 10px rgba(10,132,255,.6))}
+.nav .brand img{width:42px;height:42px;object-fit:contain;filter:sepia(.85) saturate(1.3) hue-rotate(350deg) drop-shadow(0 0 10px rgba(201,162,74,.5))}
 .nav-links{display:flex;gap:1.6rem;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.7)}
 .nav-links a:hover{color:#fff}
 .nav-cta{
   font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
-  border:1px solid rgba(62,203,255,.45);padding:.55rem 1rem;border-radius:999px;
+  border:1px solid rgba(201,162,74,.5);padding:.55rem 1rem;border-radius:999px;
 }
-.nav-cta:hover{background:rgba(10,132,255,.2)}
+.nav-cta:hover{background:rgba(201,162,74,.14)}
 .burger{display:none;width:44px;height:44px;flex-direction:column;justify-content:center;gap:6px;z-index:95}
 .burger span{display:block;height:2px;background:#fff;width:22px;margin-left:11px;transition:.3s}
 @media(max-width:860px){
@@ -90,7 +88,7 @@ body::before{
   .burger{display:flex}
   .nav-links{
     position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    gap:1.6rem;background:rgba(2,4,12,.94);backdrop-filter:blur(18px);font-size:1rem;
+    gap:1.6rem;background:rgba(5,5,5,.96);backdrop-filter:blur(18px);font-size:1rem;
     transform:translateY(-110%);transition:transform .55s cubic-bezier(.16,1,.3,1);
   }
   .nav-links.open{transform:none}
@@ -104,7 +102,7 @@ body::before{
   position:fixed;inset:0;z-index:150;pointer-events:none;opacity:0;
   background:
     radial-gradient(circle at var(--dx,50%) var(--dy,50%), transparent 0, transparent 8%, #000 9%, #000 100%),
-    repeating-linear-gradient(0deg,transparent 0 2px,rgba(10,132,255,.15) 2px 3px);
+    repeating-linear-gradient(0deg,transparent 0 2px,rgba(201,162,74,.15) 2px 3px);
   mix-blend-mode:multiply;transition:opacity .15s;
 }
 .dissolve.on{opacity:1;animation:dissolve 720ms ease forwards}
@@ -125,33 +123,33 @@ body::before{
 .hero{
   min-height:100vh;position:relative;display:grid;place-items:center;overflow:hidden;
   background:
-    radial-gradient(900px 500px at 50% -10%,rgba(10,132,255,.22),transparent 60%),
-    radial-gradient(700px 400px at 80% 80%,rgba(8,40,90,.35),transparent 55%),
-    linear-gradient(180deg,#000 0%,#02040c 50%,#030816 100%);
+    radial-gradient(900px 500px at 50% -10%,rgba(201,162,74,.17),transparent 60%),
+    radial-gradient(700px 400px at 80% 80%,rgba(78,57,20,.26),transparent 55%),
+    linear-gradient(180deg,#000 0%,#050505 50%,#0a0805 100%);
 }
 .orbits{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
 .orbit{
-  position:absolute;border-radius:50%;border:1px solid rgba(62,203,255,.12);
+  position:absolute;border-radius:50%;border:1px solid rgba(201,162,74,.14);
   animation:spin 40s linear infinite;
 }
 .orbit:nth-child(1){width:min(78vw,720px);height:min(78vw,720px);animation-duration:48s}
-.orbit:nth-child(2){width:min(56vw,520px);height:min(56vw,520px);animation-duration:32s;animation-direction:reverse;border-color:rgba(10,132,255,.18)}
+.orbit:nth-child(2){width:min(56vw,520px);height:min(56vw,520px);animation-duration:32s;animation-direction:reverse;border-color:rgba(201,162,74,.2)}
 .orbit:nth-child(3){width:min(34vw,320px);height:min(34vw,320px);animation-duration:22s}
 @keyframes spin{to{transform:rotate(360deg)}}
-.hero-logo{width:min(42vw,340px);margin:0 auto 1.2rem;filter:drop-shadow(0 0 40px rgba(10,132,255,.45));animation:up .9s .2s both}
+.hero-logo{width:min(42vw,340px);margin:0 auto 1.2rem;filter:sepia(.85) saturate(1.3) hue-rotate(350deg) drop-shadow(0 0 40px rgba(201,162,74,.42));animation:up .9s .2s both}
 .hero-copy{position:relative;z-index:3;text-align:center;padding:8rem 6vw 4rem}
 .eyebrow{
-  font-size:.72rem;letter-spacing:.46em;text-transform:uppercase;color:var(--cyan);
+  font-size:.72rem;letter-spacing:.46em;text-transform:uppercase;color:var(--gold);
   margin-bottom:1.4rem;opacity:0;animation:up .9s .4s forwards;
 }
 .mask-wrap{overflow:hidden;display:inline-block}
 .hero h1{
   font-family:Syne,sans-serif;font-weight:800;font-size:clamp(3.4rem,12vw,9.5rem);
   letter-spacing:.08em;line-height:.9;
-  background:linear-gradient(180deg,#fff 20%,#8ec8ff 70%,#0a84ff 100%);
+  background:linear-gradient(180deg,#fff 18%,#f0dfb7 66%,#c9a24a 100%);
   -webkit-background-clip:text;background-clip:text;color:transparent;
   transform:translateY(110%);animation:reveal 1.15s cubic-bezier(.16,1,.3,1) .15s forwards;
-  filter:drop-shadow(0 0 40px rgba(10,132,255,.35));
+  filter:drop-shadow(0 0 40px rgba(201,162,74,.32));
 }
 .tag{
   margin-top:1.4rem;font-family:Cormorant Garamond,serif;font-style:italic;font-size:clamp(1.15rem,2.4vw,1.85rem);
@@ -163,7 +161,7 @@ body::before{
   display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.4rem;border-radius:999px;
   font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
 }
-.btn.primary{background:linear-gradient(90deg,#0a84ff,#3ecbff);color:#031018;font-weight:700}
+.btn.primary{background:linear-gradient(100deg,#b8892e,#f0d58d);color:#171106;font-weight:700}
 .btn.ghost{border:1px solid var(--line)}
 .btn.primary:hover{filter:brightness(1.08)}
 .scroll-hint{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);font-size:.65rem;letter-spacing:.3em;color:var(--graphite);z-index:3}
@@ -172,7 +170,7 @@ body::before{
 
 /* sections */
 section{position:relative;padding:7.5rem 7vw}
-.sec-label{font-size:.68rem;letter-spacing:.4em;text-transform:uppercase;color:var(--cyan);margin-bottom:1rem}
+.sec-label{font-size:.68rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
 h2{
   font-family:Syne,sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3.6rem);letter-spacing:-.02em;line-height:1.05;
 }
@@ -191,12 +189,12 @@ h2{
 
 /* about panel */
 .glass{
-  background:linear-gradient(180deg,rgba(10,30,60,.55),rgba(4,10,22,.7));
+  background:linear-gradient(180deg,rgba(62,47,19,.34),rgba(10,9,7,.82));
   border:1px solid var(--line);border-radius:28px;padding:2.2rem;backdrop-filter:blur(16px);
   box-shadow:0 30px 80px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.06);
 }
 .stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:1.6rem}
-.stat b{display:block;font-family:Syne,sans-serif;font-size:1.7rem;color:var(--cyan)}
+.stat b{display:block;font-family:Syne,sans-serif;font-size:1.7rem;color:var(--gold)}
 .stat span{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--graphite)}
 
 /* structure */
@@ -205,23 +203,23 @@ h2{
 }
 .parent{
   text-align:center;padding:2.4rem 1.4rem;border-radius:24px;
-  background:linear-gradient(180deg,rgba(10,132,255,.18),rgba(4,12,28,.7));
-  border:1px solid rgba(62,203,255,.3);position:relative;overflow:hidden;
+  background:linear-gradient(180deg,rgba(201,162,74,.17),rgba(17,14,8,.78));
+  border:1px solid rgba(201,162,74,.35);position:relative;overflow:hidden;
 }
 .parent::after{
   content:"";position:absolute;inset:auto 20% -40px 20%;height:80px;
-  background:radial-gradient(circle,rgba(62,203,255,.35),transparent 70%);
+  background:radial-gradient(circle,rgba(201,162,74,.3),transparent 70%);
 }
 .subs{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
 @media(max-width:900px){.subs{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.subs{grid-template-columns:1fr}}
 .card{
   padding:1.5rem 1.25rem;border-radius:20px;border:1px solid var(--line);
-  background:rgba(6,16,32,.7);min-height:210px;transition:transform .45s,border-color .45s,box-shadow .45s;
+  background:rgba(16,14,10,.86);min-height:210px;transition:transform .45s,border-color .45s,box-shadow .45s;
   position:relative;overflow:hidden;
 }
-.card:hover{transform:translateY(-8px);border-color:rgba(62,203,255,.5);box-shadow:0 20px 50px rgba(10,132,255,.18)}
-.card .num{font-family:Syne,sans-serif;color:var(--cyan);letter-spacing:.2em;font-size:.72rem}
+.card:hover{transform:translateY(-8px);border-color:rgba(201,162,74,.55);box-shadow:0 20px 50px rgba(201,162,74,.14)}
+.card .num{font-family:Syne,sans-serif;color:var(--gold);letter-spacing:.2em;font-size:.72rem}
 .card h3{font-family:Syne,sans-serif;margin:.5rem 0 .6rem;font-size:1.15rem}
 .card p{color:var(--graphite);font-size:.9rem;line-height:1.6}
 .card .shine{
@@ -234,16 +232,16 @@ h2{
 .values{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.2rem}
 @media(max-width:900px){.values{grid-template-columns:1fr}}
 .v{
-  padding:1.5rem;border-top:1px solid rgba(62,203,255,.35);
-  background:linear-gradient(180deg,rgba(10,132,255,.08),transparent);
+  padding:1.5rem;border-top:1px solid rgba(201,162,74,.35);
+  background:linear-gradient(180deg,rgba(201,162,74,.08),transparent);
 }
 .v h4{font-family:Syne,sans-serif;margin-bottom:.45rem}
 
 /* story */
 .story{
   background:
-    radial-gradient(600px 280px at 10% 20%,rgba(10,132,255,.12),transparent),
-    linear-gradient(180deg,#02040c,#050b18 40%,#02040c);
+    radial-gradient(600px 280px at 10% 20%,rgba(201,162,74,.11),transparent),
+    linear-gradient(180deg,#050505,#100d08 40%,#050505);
 }
 .quote{
   font-family:Cormorant Garamond,serif;font-size:clamp(1.4rem,3vw,2.2rem);font-style:italic;line-height:1.35;
@@ -253,7 +251,7 @@ h2{
 /* palette */
 .swatches{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.4rem}
 .sw{width:88px;height:88px;border-radius:18px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:flex-end;padding:.5rem;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase}
-.s1{background:#02040c}.s2{background:#0a84ff;color:#031018}.s3{background:#d4b37a;color:#1a1408}.s4{background:#f4efe6;color:#111}.s5{background:#1c2436}
+.s1{background:#050505}.s2{background:#c9a24a;color:#171106}.s3{background:#f0dfb7;color:#1a1408}.s4{background:#f6f1e6;color:#111}.s5{background:#201c14}
 
 /* contact */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
@@ -263,13 +261,13 @@ input,textarea{
   padding:.95rem 1rem;color:#fff;outline:none;
 }
 textarea{min-height:130px;resize:vertical}
-input:focus,textarea:focus{border-color:var(--cyan)}
+input:focus,textarea:focus{border-color:var(--gold)}
 footer{padding:2rem 7vw 3.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--graphite);font-size:.8rem;border-top:1px solid rgba(255,255,255,.05)}
 
 .marquee{
   overflow:hidden;border-block:1px solid var(--line);padding:.9rem 0;white-space:nowrap;
 }
-.marquee span{display:inline-block;animation:mq 28s linear infinite;font-family:Syne,sans-serif;letter-spacing:.28em;font-size:.75rem;color:rgba(62,203,255,.7)}
+.marquee span{display:inline-block;animation:mq 28s linear infinite;font-family:Syne,sans-serif;letter-spacing:.28em;font-size:.75rem;color:rgba(201,162,74,.78)}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 </style>
 </head>
@@ -307,7 +305,7 @@ footer{padding:2rem 7vw 3.5rem;display:flex;justify-content:space-between;gap:1r
 
 <header class="hero" id="top">
   <svg class="morph" viewBox="0 0 400 400" aria-hidden="true">
-    <defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a84ff"/><stop offset="1" stop-color="#3ecbff"/></linearGradient></defs>
+    <defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c9a24a"/><stop offset="1" stop-color="#f0dfb7"/></linearGradient></defs>
     <path id="morphPath" fill="url(#mg)" opacity=".55" filter="url(#goo)"
       d="M200 40C270 40 350 110 350 200C350 290 270 360 200 360C130 360 50 290 50 200C50 110 130 40 200 40Z"/>
   </svg>
@@ -343,7 +341,7 @@ footer{padding:2rem 7vw 3.5rem;display:flex;justify-content:space-between;gap:1r
       <p class="muted fade-up" style="margin-top:1rem">Each subsidiary maintains its own expertise, market identity and customer experience while sharing GEODIO’s commitment to quality, creativity, professionalism and long-term value. One parent company. Distinctive subsidiaries. A unified vision for excellence.</p>
     </div>
     <div class="glass fade-up">
-      <p style="letter-spacing:.28em;font-size:.7rem;text-transform:uppercase;color:var(--cyan)">Master brand</p>
+      <p style="letter-spacing:.28em;font-size:.7rem;text-transform:uppercase;color:var(--gold)">Master brand</p>
       <p style="font-family:Syne;font-size:1.4rem;margin:.6rem 0 1rem">A Premium House of Brands</p>
       <p class="muted">GEODIO is the corporate master brand. Subsidiaries develop their own identity and market position — so the group can expand into additional industries without limiting the parent reputation.</p>
       <div class="stat-grid">
@@ -439,12 +437,12 @@ footer{padding:2rem 7vw 3.5rem;display:flex;justify-content:space-between;gap:1r
 
 <section>
   <p class="sec-label fade-up">06 — Identity</p>
-  <h2 class="clip-reveal">Obsidian. Electric blue.<br><span class="gold">Champagne gold.</span></h2>
+  <h2 class="clip-reveal">Black. Obsidian.<br><span class="gold">Champagne gold.</span></h2>
   <p class="muted fade-up" style="margin-top:1rem">A restrained, premium, corporate master palette. Individual subsidiaries may introduce their own accent colours.</p>
   <div class="swatches fade-up">
     <div class="sw s1">Obsidian</div>
-    <div class="sw s2">Blue</div>
-    <div class="sw s3">Gold</div>
+    <div class="sw s2">Gold</div>
+    <div class="sw s3">Champagne</div>
     <div class="sw s4">Ivory</div>
     <div class="sw s5">Graphite</div>
   </div>
@@ -531,7 +529,7 @@ if(morph){
   },1800);
 }
 
-/* matrix rain — blue glyphs */
+/* matrix rain — gold glyphs */
 (()=>{
   const c=document.getElementById('matrix');
   if(!c) return;
@@ -546,12 +544,12 @@ if(morph){
   resize();
   addEventListener('resize',resize);
   function draw(){
-    ctx.fillStyle='rgba(2,4,12,0.12)';
+    ctx.fillStyle='rgba(5,5,5,0.12)';
     ctx.fillRect(0,0,c.width,c.height);
     ctx.font=fs+'px monospace';
     for(let i=0;i<drops.length;i++){
       const ch=glyphs[Math.floor(Math.random()*glyphs.length)];
-      ctx.fillStyle=i%7===0?'#e8d5b0':'#3ecbff';
+      ctx.fillStyle=i%7===0?'#f0dfb7':'#c9a24a';
       ctx.fillText(ch,i*fs,drops[i]*fs);
       if(drops[i]*fs>c.height && Math.random()>0.975) drops[i]=0;
       drops[i]++;
