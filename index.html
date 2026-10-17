@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+<title>GEODIO — One Vision. Multiple Industries. Infinite Possibilities.</title>
+<meta name="description" content="GEODIO is a premium house of brands building distinctive businesses across Event Management, Apparel, Advertising and Branding. A vision first conceived in 2013–2014." />
+<meta name="theme-color" content="#02040c" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="GEODIO" />
+<meta name="mobile-web-app-capable" content="yes" />
+<link rel="manifest" href="manifest.json" />
+<link rel="icon" href="logo.png" />
+<link rel="apple-touch-icon" href="logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Syne:wght@500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --obsidian:#02040c;
+  --void:#050814;
+  --navy:#061428;
+  --blue:#0a84ff;
+  --cyan:#3ecbff;
+  --gold:#d4b37a;
+  --champagne:#e8d5b0;
+  --ivory:#f4efe6;
+  --graphite:#8b93a7;
+  --line:rgba(62,203,255,.18);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{background:var(--obsidian);color:var(--ivory);font-family:Outfit,system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+
+/* noise + grain */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:80;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* cursor glow */
+.cursor-glow{
+  position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:1;
+  background:radial-gradient(circle,rgba(10,132,255,.16),transparent 62%);
+  transform:translate(-50%,-50%);mix-blend-mode:screen;
+}
+
+/* loader */
+#loader{
+  position:fixed;inset:0;z-index:200;background:#000;display:grid;place-items:center;
+  transition:opacity .8s ease,visibility .8s;
+}
+#loader.done{opacity:0;visibility:hidden;pointer-events:none}
+.loader-inner{text-align:center}
+.loader-mark{width:180px;height:180px;margin:0 auto .4rem;filter:drop-shadow(0 0 32px rgba(10,132,255,.75));object-fit:contain}
+.loader-word{
+  font-family:Syne,sans-serif;font-weight:800;letter-spacing:.42em;font-size:1.1rem;
+  background:linear-gradient(90deg,#fff,var(--cyan),#fff);
+  background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shimmer 2.2s linear infinite;
+}
+.loader-bar{width:180px;height:1px;margin:1.4rem auto 0;background:#123;overflow:hidden;position:relative}
+.loader-bar span{position:absolute;inset:0;background:linear-gradient(90deg,transparent,var(--cyan),transparent);animation:scan 1.4s ease-in-out infinite}
+@keyframes shimmer{to{background-position:-200% 0}}
+@keyframes scan{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+
+/* nav */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:90;display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 4vw;background:linear-gradient(180deg,rgba(0,0,0,.55),transparent);
+}
+.nav .brand{display:flex;align-items:center;gap:.7rem;font-family:Syne,sans-serif;font-weight:800;letter-spacing:.28em;font-size:.78rem}
+.nav .brand img{width:42px;height:42px;object-fit:contain;filter:drop-shadow(0 0 10px rgba(10,132,255,.6))}
+.nav-links{display:flex;gap:1.6rem;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.nav-links a:hover{color:#fff}
+.nav-cta{
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  border:1px solid rgba(62,203,255,.45);padding:.55rem 1rem;border-radius:999px;
+}
+.nav-cta:hover{background:rgba(10,132,255,.2)}
+.burger{display:none;width:44px;height:44px;flex-direction:column;justify-content:center;gap:6px;z-index:95}
+.burger span{display:block;height:2px;background:#fff;width:22px;margin-left:11px;transition:.3s}
+@media(max-width:860px){
+  .nav-cta{display:none}
+  .burger{display:flex}
+  .nav-links{
+    position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:1.6rem;background:rgba(2,4,12,.94);backdrop-filter:blur(18px);font-size:1rem;
+    transform:translateY(-110%);transition:transform .55s cubic-bezier(.16,1,.3,1);
+  }
+  .nav-links.open{transform:none}
+}
+#matrix{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.28;mix-blend-mode:screen}
+.morph{
+  position:absolute;width:min(70vw,520px);height:min(70vw,520px);left:50%;top:50%;
+  transform:translate(-50%,-50%);filter:blur(2px);opacity:.35;pointer-events:none;z-index:1;
+}
+.dissolve{
+  position:fixed;inset:0;z-index:150;pointer-events:none;opacity:0;
+  background:
+    radial-gradient(circle at var(--dx,50%) var(--dy,50%), transparent 0, transparent 8%, #000 9%, #000 100%),
+    repeating-linear-gradient(0deg,transparent 0 2px,rgba(10,132,255,.15) 2px 3px);
+  mix-blend-mode:multiply;transition:opacity .15s;
+}
+.dissolve.on{opacity:1;animation:dissolve 720ms ease forwards}
+@keyframes dissolve{
+  0%{clip-path:circle(0 at var(--dx,50%) var(--dy,50%));opacity:1;filter:url(#noise)}
+  40%{opacity:1}
+  100%{clip-path:circle(150% at var(--dx,50%) var(--dy,50%));opacity:0}
+}
+@media(max-width:900px){
+  .contact-grid{grid-template-columns:1fr}
+  .hero-logo{width:min(72vw,280px)}
+  .hero h1{font-size:clamp(2.6rem,16vw,4.4rem)}
+  .btn{min-height:48px;padding:1rem 1.3rem}
+  .cursor-glow{display:none}
+}
+
+/* hero */
+.hero{
+  min-height:100vh;position:relative;display:grid;place-items:center;overflow:hidden;
+  background:
+    radial-gradient(900px 500px at 50% -10%,rgba(10,132,255,.22),transparent 60%),
+    radial-gradient(700px 400px at 80% 80%,rgba(8,40,90,.35),transparent 55%),
+    linear-gradient(180deg,#000 0%,#02040c 50%,#030816 100%);
+}
+.orbits{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.orbit{
+  position:absolute;border-radius:50%;border:1px solid rgba(62,203,255,.12);
+  animation:spin 40s linear infinite;
+}
+.orbit:nth-child(1){width:min(78vw,720px);height:min(78vw,720px);animation-duration:48s}
+.orbit:nth-child(2){width:min(56vw,520px);height:min(56vw,520px);animation-duration:32s;animation-direction:reverse;border-color:rgba(10,132,255,.18)}
+.orbit:nth-child(3){width:min(34vw,320px);height:min(34vw,320px);animation-duration:22s}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hero-logo{width:min(42vw,340px);margin:0 auto 1.2rem;filter:drop-shadow(0 0 40px rgba(10,132,255,.45));animation:up .9s .2s both}
+.hero-copy{position:relative;z-index:3;text-align:center;padding:8rem 6vw 4rem}
+.eyebrow{
+  font-size:.72rem;letter-spacing:.46em;text-transform:uppercase;color:var(--cyan);
+  margin-bottom:1.4rem;opacity:0;animation:up .9s .4s forwards;
+}
+.mask-wrap{overflow:hidden;display:inline-block}
+.hero h1{
+  font-family:Syne,sans-serif;font-weight:800;font-size:clamp(3.4rem,12vw,9.5rem);
+  letter-spacing:.08em;line-height:.9;
+  background:linear-gradient(180deg,#fff 20%,#8ec8ff 70%,#0a84ff 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  transform:translateY(110%);animation:reveal 1.15s cubic-bezier(.16,1,.3,1) .15s forwards;
+  filter:drop-shadow(0 0 40px rgba(10,132,255,.35));
+}
+.tag{
+  margin-top:1.4rem;font-family:Cormorant Garamond,serif;font-style:italic;font-size:clamp(1.15rem,2.4vw,1.85rem);
+  color:var(--champagne);opacity:0;animation:up .9s .7s forwards;
+}
+.lede{max-width:620px;margin:1.2rem auto 0;color:var(--graphite);line-height:1.7;opacity:0;animation:up .9s .9s forwards}
+.hero-actions{display:flex;gap:.9rem;justify-content:center;margin-top:2.2rem;flex-wrap:wrap;opacity:0;animation:up .9s 1.05s forwards}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.4rem;border-radius:999px;
+  font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
+}
+.btn.primary{background:linear-gradient(90deg,#0a84ff,#3ecbff);color:#031018;font-weight:700}
+.btn.ghost{border:1px solid var(--line)}
+.btn.primary:hover{filter:brightness(1.08)}
+.scroll-hint{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);font-size:.65rem;letter-spacing:.3em;color:var(--graphite);z-index:3}
+@keyframes reveal{to{transform:none}}
+@keyframes up{to{opacity:1;transform:none}}
+
+/* sections */
+section{position:relative;padding:7.5rem 7vw}
+.sec-label{font-size:.68rem;letter-spacing:.4em;text-transform:uppercase;color:var(--cyan);margin-bottom:1rem}
+h2{
+  font-family:Syne,sans-serif;font-weight:700;font-size:clamp(2rem,5vw,3.6rem);letter-spacing:-.02em;line-height:1.05;
+}
+.gold{color:var(--champagne)}
+.muted{color:var(--graphite);line-height:1.75;max-width:62ch}
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center}
+@media(max-width:900px){.split{grid-template-columns:1fr;gap:2rem}section{padding:5rem 6vw}}
+
+/* mask text */
+.clip-reveal{
+  clip-path:inset(0 0 100% 0);transition:clip-path 1.1s cubic-bezier(.16,1,.3,1);
+}
+.clip-reveal.in{clip-path:inset(0 0 0 0)}
+.fade-up{opacity:0;transform:translateY(40px);transition:1s cubic-bezier(.16,1,.3,1)}
+.fade-up.in{opacity:1;transform:none}
+
+/* about panel */
+.glass{
+  background:linear-gradient(180deg,rgba(10,30,60,.55),rgba(4,10,22,.7));
+  border:1px solid var(--line);border-radius:28px;padding:2.2rem;backdrop-filter:blur(16px);
+  box-shadow:0 30px 80px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.06);
+}
+.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;margin-top:1.6rem}
+.stat b{display:block;font-family:Syne,sans-serif;font-size:1.7rem;color:var(--cyan)}
+.stat span{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--graphite)}
+
+/* structure */
+.house{
+  display:grid;grid-template-columns:1fr;gap:1.2rem;margin-top:2.4rem;
+}
+.parent{
+  text-align:center;padding:2.4rem 1.4rem;border-radius:24px;
+  background:linear-gradient(180deg,rgba(10,132,255,.18),rgba(4,12,28,.7));
+  border:1px solid rgba(62,203,255,.3);position:relative;overflow:hidden;
+}
+.parent::after{
+  content:"";position:absolute;inset:auto 20% -40px 20%;height:80px;
+  background:radial-gradient(circle,rgba(62,203,255,.35),transparent 70%);
+}
+.subs{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+@media(max-width:900px){.subs{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.subs{grid-template-columns:1fr}}
+.card{
+  padding:1.5rem 1.25rem;border-radius:20px;border:1px solid var(--line);
+  background:rgba(6,16,32,.7);min-height:210px;transition:transform .45s,border-color .45s,box-shadow .45s;
+  position:relative;overflow:hidden;
+}
+.card:hover{transform:translateY(-8px);border-color:rgba(62,203,255,.5);box-shadow:0 20px 50px rgba(10,132,255,.18)}
+.card .num{font-family:Syne,sans-serif;color:var(--cyan);letter-spacing:.2em;font-size:.72rem}
+.card h3{font-family:Syne,sans-serif;margin:.5rem 0 .6rem;font-size:1.15rem}
+.card p{color:var(--graphite);font-size:.9rem;line-height:1.6}
+.card .shine{
+  position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.07) 50%,transparent 70%);
+  transform:translateX(-120%);transition:transform .8s;
+}
+.card:hover .shine{transform:translateX(120%)}
+
+/* values */
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.2rem}
+@media(max-width:900px){.values{grid-template-columns:1fr}}
+.v{
+  padding:1.5rem;border-top:1px solid rgba(62,203,255,.35);
+  background:linear-gradient(180deg,rgba(10,132,255,.08),transparent);
+}
+.v h4{font-family:Syne,sans-serif;margin-bottom:.45rem}
+
+/* story */
+.story{
+  background:
+    radial-gradient(600px 280px at 10% 20%,rgba(10,132,255,.12),transparent),
+    linear-gradient(180deg,#02040c,#050b18 40%,#02040c);
+}
+.quote{
+  font-family:Cormorant Garamond,serif;font-size:clamp(1.4rem,3vw,2.2rem);font-style:italic;line-height:1.35;
+  max-width:18em;
+}
+
+/* palette */
+.swatches{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1.4rem}
+.sw{width:88px;height:88px;border-radius:18px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:flex-end;padding:.5rem;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase}
+.s1{background:#02040c}.s2{background:#0a84ff;color:#031018}.s3{background:#d4b37a;color:#1a1408}.s4{background:#f4efe6;color:#111}.s5{background:#1c2436}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+form{display:grid;gap:.8rem}
+input,textarea{
+  width:100%;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:14px;
+  padding:.95rem 1rem;color:#fff;outline:none;
+}
+textarea{min-height:130px;resize:vertical}
+input:focus,textarea:focus{border-color:var(--cyan)}
+footer{padding:2rem 7vw 3.5rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;color:var(--graphite);font-size:.8rem;border-top:1px solid rgba(255,255,255,.05)}
+
+.marquee{
+  overflow:hidden;border-block:1px solid var(--line);padding:.9rem 0;white-space:nowrap;
+}
+.marquee span{display:inline-block;animation:mq 28s linear infinite;font-family:Syne,sans-serif;letter-spacing:.28em;font-size:.75rem;color:rgba(62,203,255,.7)}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+</head>
+<body>
+<canvas id="matrix" aria-hidden="true"></canvas>
+<div class="dissolve" id="dissolve"></div>
+<svg width="0" height="0" aria-hidden="true">
+  <filter id="goo"><feGaussianBlur in="SourceGraphic" stdDeviation="12" result="b"/><feColorMatrix in="b" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 28 -10"/></filter>
+</svg>
+<div class="cursor-glow" id="glow"></div>
+
+<div id="loader">
+  <div class="loader-inner">
+    <img class="loader-mark" src="logo.png" alt="GEODIO" />
+    <div class="loader-word">GEODIO</div>
+    <div class="loader-bar"><span></span></div>
+  </div>
+</div>
+
+<nav class="nav">
+  <a class="brand" href="#top">
+    <img src="logo.png" alt="GEODIO" />
+    GEODIO
+  </a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#group">Group</a>
+    <a href="#divisions">Divisions</a>
+    <a href="#story">Story</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a class="nav-cta" href="#contact">Enquire</a>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="hero" id="top">
+  <svg class="morph" viewBox="0 0 400 400" aria-hidden="true">
+    <defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0a84ff"/><stop offset="1" stop-color="#3ecbff"/></linearGradient></defs>
+    <path id="morphPath" fill="url(#mg)" opacity=".55" filter="url(#goo)"
+      d="M200 40C270 40 350 110 350 200C350 290 270 360 200 360C130 360 50 290 50 200C50 110 130 40 200 40Z"/>
+  </svg>
+  <div class="orbits" aria-hidden="true">
+    <div class="orbit"></div>
+    <div class="orbit"></div>
+    <div class="orbit"></div>
+  </div>
+  <div class="hero-copy">
+    <p class="eyebrow">Premium Holding Company · House of Brands</p>
+    <img class="hero-logo" src="logo.png" alt="GEODIO triangular globe mark" />
+    <div class="mask-wrap"><h1>GEODIO</h1></div>
+    <p class="tag">One Vision. Multiple Industries. Infinite Possibilities.</p>
+    <p class="lede">A premium house of brands built around creativity, enterprise and long-term growth — envisioned since 2013–2014 to establish distinctive businesses across events, apparel, advertising and branding.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#group">Explore the Group</a>
+      <a class="btn ghost" href="#story">The Founder’s Vision</a>
+    </div>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <span>GEODIO EVENTS &nbsp;·&nbsp; GEODIO APPAREL &nbsp;·&nbsp; GEODIO ADVERTISING &nbsp;·&nbsp; GEODIO BRANDS &nbsp;·&nbsp; ONE PARENT COMPANY &nbsp;·&nbsp; DISTINCTIVE SUBSIDIARIES &nbsp;·&nbsp; GEODIO EVENTS &nbsp;·&nbsp; GEODIO APPAREL &nbsp;·&nbsp; GEODIO ADVERTISING &nbsp;·&nbsp; GEODIO BRANDS &nbsp;·&nbsp; </span>
+</div>
+
+<section id="about">
+  <div class="split">
+    <div>
+      <p class="sec-label fade-up">01 — Who we are</p>
+      <h2 class="clip-reveal">A vision beyond<br>a <span class="gold">single industry</span>.</h2>
+      <p class="muted fade-up" style="margin-top:1.4rem">GEODIO is an emerging premium holding company envisioned to establish, develop and manage a portfolio of distinctive businesses. Rooted in an entrepreneurial vision first conceived in 2013–2014, it transforms creative ideas into sustainable enterprises — bringing together business development, innovation, brand identity and professional excellence under one corporate umbrella.</p>
+      <p class="muted fade-up" style="margin-top:1rem">Each subsidiary maintains its own expertise, market identity and customer experience while sharing GEODIO’s commitment to quality, creativity, professionalism and long-term value. One parent company. Distinctive subsidiaries. A unified vision for excellence.</p>
+    </div>
+    <div class="glass fade-up">
+      <p style="letter-spacing:.28em;font-size:.7rem;text-transform:uppercase;color:var(--cyan)">Master brand</p>
+      <p style="font-family:Syne;font-size:1.4rem;margin:.6rem 0 1rem">A Premium House of Brands</p>
+      <p class="muted">GEODIO is the corporate master brand. Subsidiaries develop their own identity and market position — so the group can expand into additional industries without limiting the parent reputation.</p>
+      <div class="stat-grid">
+        <div class="stat"><b>2013</b><span>Vision conceived</span></div>
+        <div class="stat"><b>04</b><span>Core divisions</span></div>
+        <div class="stat"><b>∞</b><span>Possibilities</span></div>
+        <div class="stat"><b>01</b><span>Unified vision</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="group" style="padding-top:2rem">
+  <p class="sec-label fade-up">02 — Group structure</p>
+  <h2 class="clip-reveal">Parent company. Distinctive subsidiaries.</h2>
+  <p class="muted fade-up" style="margin-top:1rem">Strategy · Investment · Governance · Growth. Proposed names subject to registration and availability.</p>
+  <div class="house">
+    <div class="parent fade-up">
+      <p class="sec-label">GEODIO GROUP / HOLDINGS</p>
+      <h3 style="font-family:Syne;font-size:2rem;letter-spacing:.12em">GEODIO</h3>
+      <p class="muted" style="margin:0 auto">The master brand that builds, owns and develops businesses across creative industries and lifestyle.</p>
+    </div>
+    <div class="subs">
+      <article class="card fade-up"><span class="shine"></span><div class="num">01</div><h3>GEODIO Events</h3><p>Event management &amp; experiences — weddings, fashion, corporate, luxury launches.</p></article>
+      <article class="card fade-up"><span class="shine"></span><div class="num">02</div><h3>GEODIO Apparel</h3><p>Clothing &amp; fashion — distinctive apparel, collections and a refined customer experience.</p></article>
+      <article class="card fade-up"><span class="shine"></span><div class="num">03</div><h3>GEODIO Advertising</h3><p>Advertising &amp; visual communications — identity, print, signage and campaigns.</p></article>
+      <article class="card fade-up"><span class="shine"></span><div class="num">04</div><h3>GEODIO Brands</h3><p>Branding &amp; business development — strategy, identity and market positioning.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="divisions">
+  <p class="sec-label fade-up">03 — Four business divisions</p>
+  <h2 class="clip-reveal">Specialised. Distinct.<br><span class="gold">United by excellence.</span></h2>
+  <div class="subs" style="margin-top:2.4rem">
+    <article class="card fade-up">
+      <span class="shine"></span>
+      <div class="num">EVENTS</div>
+      <h3>Creating experiences that last.</h3>
+      <p>Wedding planning, birthdays, fashion shows, indoor and outdoor productions, corporate events, product launches and bespoke luxury experiences.</p>
+    </article>
+    <article class="card fade-up">
+      <span class="shine"></span>
+      <div class="num">APPAREL</div>
+      <h3>Designed for identity. Defined by style.</h3>
+      <p>A clothing and lifestyle house for distinctive apparel, contemporary essentials, signature collections and branded merchandise.</p>
+    </article>
+    <article class="card fade-up">
+      <span class="shine"></span>
+      <div class="num">ADVERTISING</div>
+      <h3>Visibility with purpose.</h3>
+      <p>Logo design, visiting cards, stickers, banners, nameboards and illuminated signage — evolving into integrated visual communications.</p>
+    </article>
+    <article class="card fade-up">
+      <span class="shine"></span>
+      <div class="num">BRANDS</div>
+      <h3>Building brands with purpose.</h3>
+      <p>Brand strategy, visual identity, SME campaigns, retail concepts and new business development under one strategic division.</p>
+    </article>
+  </div>
+</section>
+
+<section>
+  <p class="sec-label fade-up">04 — Vision, mission &amp; values</p>
+  <div class="split">
+    <div>
+      <h2 class="clip-reveal">Build exceptional brands.<br>Deliver lasting value.</h2>
+      <p class="muted fade-up" style="margin-top:1.2rem"><strong style="color:var(--ivory)">Vision.</strong> To become a distinguished multi-industry business group recognised for creating exceptional brands, delivering meaningful experiences and building sustainable enterprises.</p>
+      <p class="muted fade-up" style="margin-top:.8rem"><strong style="color:var(--ivory)">Mission.</strong> To identify opportunities, develop distinctive businesses and deliver premium products and services through creativity, strategic thinking, innovation and operational excellence.</p>
+    </div>
+    <div class="values">
+      <div class="v fade-up"><h4>Excellence</h4><p class="muted">High standards in every business we develop.</p></div>
+      <div class="v fade-up"><h4>Creativity</h4><p class="muted">Original ideas into distinctive products, brands and experiences.</p></div>
+      <div class="v fade-up"><h4>Integrity</h4><p class="muted">Trusted relationships through responsible practice.</p></div>
+      <div class="v fade-up"><h4>Innovation</h4><p class="muted">New approaches, technologies and opportunities.</p></div>
+      <div class="v fade-up"><h4>Entrepreneurship</h4><p class="muted">Ambition, initiative and sustainable development.</p></div>
+      <div class="v fade-up"><h4>Long-term vision</h4><p class="muted">Enterprises that outlast immediate commercial success.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <p class="sec-label fade-up">05 — The story behind GEODIO</p>
+  <div class="split">
+    <p class="quote clip-reveal">Every great enterprise begins with a vision.</p>
+    <div>
+      <p class="muted fade-up">The idea behind GEODIO was born around 2013–2014, when its founder first imagined a business identity capable of growing beyond a single product, service or industry. A handwritten concept and an original logo sketch represented something greater: a family of businesses united by creativity, enterprise and excellence.</p>
+      <p class="muted fade-up" style="margin-top:1rem">From event management and clothing to advertising and brand development, the original vision was a platform through which multiple businesses could grow under one identity. That ambition evolved into GEODIO — a premium holding company designed to create, nurture and develop distinctive brands.</p>
+      <p class="muted fade-up" style="margin-top:1rem">GEODIO is not simply a business name. It is a vision being built into an enterprise.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <p class="sec-label fade-up">06 — Identity</p>
+  <h2 class="clip-reveal">Obsidian. Electric blue.<br><span class="gold">Champagne gold.</span></h2>
+  <p class="muted fade-up" style="margin-top:1rem">A restrained, premium, corporate master palette. Individual subsidiaries may introduce their own accent colours.</p>
+  <div class="swatches fade-up">
+    <div class="sw s1">Obsidian</div>
+    <div class="sw s2">Blue</div>
+    <div class="sw s3">Gold</div>
+    <div class="sw s4">Ivory</div>
+    <div class="sw s5">Graphite</div>
+  </div>
+  <p class="muted fade-up" style="margin-top:1.6rem">Taglines — One Vision. Multiple Industries. Infinite Possibilities. · Beyond Business. Building Legacies. · The Art of Building Brands. · Distinctive Businesses. One Extraordinary Vision. · Created with Vision. Built for Tomorrow.</p>
+</section>
+
+<section id="contact">
+  <p class="sec-label fade-up">07 — Begin a conversation</p>
+  <h2 class="clip-reveal">Created with vision.<br>Built for tomorrow.</h2>
+  <div class="contact-grid">
+    <p class="muted fade-up">Founded on a vision first conceived in 2013–2014, GEODIO is an emerging multi-industry holding company focused on building distinctive businesses across Event Management, Fashion, Advertising and Branding. We welcome partners, collaborators and future subsidiaries.</p>
+    <form class="fade-up" onsubmit="event.preventDefault();this.querySelector('button').textContent='Received — thank you';">
+      <input type="text" name="name" placeholder="Name" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <textarea name="msg" placeholder="How can GEODIO help?" required></textarea>
+      <button class="btn primary" type="submit">Send enquiry</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <span>GEODIO · A Premium House of Brands</span>
+  <span>One Vision. Multiple Industries. Infinite Possibilities.</span>
+</footer>
+
+<script>
+window.addEventListener('load',()=>{
+  setTimeout(()=>document.getElementById('loader').classList.add('done'),1200);
+});
+const glow=document.getElementById('glow');
+window.addEventListener('pointermove',e=>{
+  if(!glow) return;
+  glow.style.left=e.clientX+'px';
+  glow.style.top=e.clientY+'px';
+});
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(el=>{if(el.isIntersecting)el.target.classList.add('in')});
+},{threshold:.16});
+document.querySelectorAll('.fade-up,.clip-reveal').forEach(n=>io.observe(n));
+
+/* hamburger */
+const burger=document.getElementById('burger');
+const links=document.querySelector('.nav-links');
+burger&&burger.addEventListener('click',()=>links.classList.toggle('open'));
+links&&links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+
+/* dissolve page transitions */
+const veil=document.getElementById('dissolve');
+function dissolveTo(href,x,y){
+  if(!veil) return location.hash=href;
+  const r=document.documentElement;
+  r.style.setProperty('--dx',(x/innerWidth*100)+'%');
+  r.style.setProperty('--dy',(y/innerHeight*100)+'%');
+  veil.classList.remove('on');
+  void veil.offsetWidth;
+  veil.classList.add('on');
+  setTimeout(()=>{
+    document.querySelector(href)?.scrollIntoView({behavior:'auto'});
+    setTimeout(()=>veil.classList.remove('on'),50);
+  },280);
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const href=a.getAttribute('href');
+    if(!href||href==='#') return;
+    e.preventDefault();
+    dissolveTo(href,e.clientX||innerWidth/2,e.clientY||innerHeight/2);
+  });
+});
+
+/* morphing blob */
+const morph=document.getElementById('morphPath');
+const blobs=[
+  'M200 40C270 40 350 110 350 200C350 290 270 360 200 360C130 360 50 290 50 200C50 110 130 40 200 40Z',
+  'M210 28C300 50 372 140 340 220C308 300 230 372 150 350C70 328 28 240 50 160C72 80 120 6 210 28Z',
+  'M190 60C250 20 360 90 360 190C360 290 250 370 170 350C90 330 40 250 50 170C60 90 130 100 190 60Z'
+];
+let bi=0;
+if(morph){
+  setInterval(()=>{
+    bi=(bi+1)%blobs.length;
+    morph.style.transition='d 1.8s ease-in-out';
+    morph.setAttribute('d',blobs[bi]);
+  },1800);
+}
+
+/* matrix rain — blue glyphs */
+(()=>{
+  const c=document.getElementById('matrix');
+  if(!c) return;
+  const ctx=c.getContext('2d');
+  const glyphs='GEODIOアイウエオ01∞✦';
+  let cols,drops,fs=16;
+  function resize(){
+    c.width=innerWidth;c.height=innerHeight;
+    cols=Math.floor(c.width/fs);
+    drops=Array.from({length:cols},()=>Math.random()*-40);
+  }
+  resize();
+  addEventListener('resize',resize);
+  function draw(){
+    ctx.fillStyle='rgba(2,4,12,0.12)';
+    ctx.fillRect(0,0,c.width,c.height);
+    ctx.font=fs+'px monospace';
+    for(let i=0;i<drops.length;i++){
+      const ch=glyphs[Math.floor(Math.random()*glyphs.length)];
+      ctx.fillStyle=i%7===0?'#e8d5b0':'#3ecbff';
+      ctx.fillText(ch,i*fs,drops[i]*fs);
+      if(drops[i]*fs>c.height && Math.random()>0.975) drops[i]=0;
+      drops[i]++;
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('./sw.js').catch(()=>{});
+}
+</script>
+</body>
+</html>
